@@ -9,7 +9,7 @@ const routes = {
     "/product/:id": productPage,
 }
 
-const router = () =>{
+const router = async () =>{
     const request = parseRequestUrl();
 
     // parseUrl directly compares the values inside the url
@@ -19,7 +19,8 @@ const router = () =>{
     const screen = routes[parseUrl] ? routes[parseUrl] : errorPage;
 
     const main = document.getElementById("main-container");
-    main.innerHTML = screen.render();
+    // await is used here because render is async function
+    main.innerHTML = await screen.render();
 }
 
 window.addEventListener('load', router);

@@ -1,7 +1,17 @@
-import data from '../js/data.js';
 const homePage = {
-    render: () =>{
-        const { products } = data;
+    render: async () =>{
+        const response = await fetch("http://localhost:5000/api/products", {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if(!response || !response.ok) {
+            return `<div>Error in getting data!!!</div>`
+        }
+        // using await here so that the json data from response can be usable and stored in the variable
+        const products = await response.json();
+
         return `
             <ul class="products">
                 ${products.map( product => `
