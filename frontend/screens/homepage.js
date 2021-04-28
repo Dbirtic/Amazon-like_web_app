@@ -1,16 +1,19 @@
+import axios from 'axios';
+
 const homePage = {
     render: async () =>{
-        const response = await fetch("http://localhost:5000/api/products", {
+        const response = await axios({
+            url: "http://localhost:5000/api/products",
             headers: {
                 'Content-Type': 'application/json',
             },
         });
 
-        if(!response || !response.ok) {
+        if(!response || response.statusText !== 'OK') {
             return `<div>Error in getting data!!!</div>`
         }
-        // using await here so that the json data from response can be usable and stored in the variable
-        const products = await response.json();
+        // since we're using axios we don't need json() function
+        const products = response.data;
 
         return `
             <ul class="products">
