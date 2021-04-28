@@ -1,0 +1,37 @@
+export default{
+    products: [
+        {
+            _id: '1',
+            name: 'Jim Root Telecaster',
+            category: 'Guitars',
+            image: 'images/product-1.jpg',
+            price: 1500,
+            brand: 'Fender',
+            rating: 4.5,
+            numReview: 10,
+            countInStock: 6,
+        },
+        {
+            _id: '2',
+            name: 'JR-30 black',
+            category: 'Guitars',
+            image: 'images/product-2.jpg',
+            price: 300,
+            brand: 'Jackson',
+            rating: 3.5,
+            numReview: 10,
+            countInStock: 6,
+        },
+        {
+            _id: '3',
+            name: 'JR-30 red',
+            category: 'Guitars',
+            image: 'images/product-3.jpg',
+            price: 300,
+            brand: 'Jackson',
+            rating: 3.5,
+            numReview: 10,
+            countInStock: 6,
+        },
+    ],
+};
