@@ -8,7 +8,7 @@ export default {
             price: 1500,
             brand: 'Fender',
             rating: 4.5,
-            numReview: 10,
+            numReview: 1500,
             countInStock: 6,
         },
         {
@@ -19,7 +19,7 @@ export default {
             price: 300,
             brand: 'Jackson',
             rating: 3.5,
-            numReview: 10,
+            numReview: 35,
             countInStock: 6,
         },
         {
@@ -30,7 +30,7 @@ export default {
             price: 300,
             brand: 'Jackson',
             rating: 3.5,
-            numReview: 10,
+            numReview: 4,
             countInStock: 6,
         },
     ],

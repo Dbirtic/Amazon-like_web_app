@@ -102,3 +102,13 @@ footer{
 .product-price{
     font-size: 2rem;
 }
+
+/* Rating */
+.rating{
+    color: #ffc000;
+    font-size: 1.8rem;
+}
+
+.rating span:last-child{
+    color: black;
+}
