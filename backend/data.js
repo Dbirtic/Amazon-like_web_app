@@ -10,6 +10,7 @@ export default {
             rating: 4.5,
             numReview: 1500,
             countInStock: 6,
+            description: "This is a metal Telecaster with pair of EMGs, a mahogany body and neck, made for shredding and chugs.",
         },
         {
             _id: '2',
@@ -21,6 +22,7 @@ export default {
             rating: 3.5,
             numReview: 35,
             countInStock: 6,
+            description: "This is a lower-end Jackson guitar with a Randy Rhoads shape body.",
         },
         {
             _id: '3',
@@ -32,6 +34,7 @@ export default {
             rating: 3.5,
             numReview: 4,
             countInStock: 6,
+            description: "This is a lower-end Jackson guitar with a Randy Rhoads shape body.",
         },
     ],
 };
