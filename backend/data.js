@@ -13,7 +13,7 @@ export default {
         },
         {
             _id: '2',
-            name: 'JR-30 black',
+            name: 'JS32R black',
             category: 'Guitars',
             image: 'images/product-2.jpg',
             price: 300,
@@ -24,7 +24,7 @@ export default {
         },
         {
             _id: '3',
-            name: 'JR-30 red',
+            name: 'JS32R red',
             category: 'Guitars',
             image: 'images/product-3.jpg',
             price: 300,
