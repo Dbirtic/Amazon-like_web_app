@@ -2,11 +2,14 @@ import homePage from '../screens/homepage.js';
 import productPage from '../screens/productpage.js';
 import { parseRequestUrl } from './utils.js';
 import errorPage from '../screens/errorpage.js';
+import cartPage from '../screens/cartpage.js';
 
 // routes object with javascript rendered pages
 const routes = {
     "/": homePage,
     "/product/:id": productPage,
+    "/cart/:id": cartPage,
+    "/cart": cartPage,
 }
 
 const router = async () =>{
