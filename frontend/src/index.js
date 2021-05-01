@@ -21,6 +21,7 @@ const router = async () =>{
     const main = document.getElementById("main-container");
     // await is used here because render is async function
     main.innerHTML = await screen.render();
+    await screen.after_render();
 }
 
 window.addEventListener('load', router);

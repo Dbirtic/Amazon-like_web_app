@@ -3,6 +3,15 @@ import { getProduct } from "../src/api";
 import rating from '../src/components/rating';
 
 const productPage = {
+    // in after_render function we make an object from the requestUrl,
+    // we create an event when the add to cart button is clicked and it redirects to the cart
+    after_render: () => {
+        const request = parseRequestUrl();
+        document.getElementById("add-button").addEventListener('click', () =>{
+            document.location.hash = `/cart/${request.id}`;
+
+        });
+    },
     render: async () => {
         const request = parseRequestUrl();
         const product = await getProduct(request.id);
