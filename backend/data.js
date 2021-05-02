@@ -21,7 +21,7 @@ export default {
             brand: 'Jackson',
             rating: 3.5,
             numReview: 35,
-            countInStock: 6,
+            countInStock: 69,
             description: "This is a lower-end Jackson guitar with a Randy Rhoads shape body.",
         },
         {
@@ -33,7 +33,7 @@ export default {
             brand: 'Jackson',
             rating: 3.5,
             numReview: 4,
-            countInStock: 6,
+            countInStock: 666,
             description: "This is a lower-end Jackson guitar with a Randy Rhoads shape body.",
         },
     ],
