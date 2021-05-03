@@ -23,6 +23,11 @@ a:hover{
 
 button:hover{
     cursor: pointer;
+    color: #fff;
+}
+
+button{
+    color: #f0f0a0;
 }
 
 input,
@@ -31,13 +36,11 @@ button{
     padding: 1rem;
     border: 0.1rem #303030 solid;
     border-radius: 0.5rem;
-    color: #f0f0a0;
 }
 
 input:hover,
 button:hover{
     border: 0.1rem #aa1100 solid;
-    color: #fff;
 }
 
 button.primary{
