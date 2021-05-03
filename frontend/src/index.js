@@ -3,6 +3,7 @@ import productPage from '../screens/productpage.js';
 import { parseRequestUrl } from './utils.js';
 import errorPage from '../screens/errorpage.js';
 import cartPage from '../screens/cartpage.js';
+import signinPage from '../screens/signinpage.js';
 
 // routes object with javascript rendered pages
 const routes = {
@@ -10,6 +11,7 @@ const routes = {
     "/product/:id": productPage,
     "/cart/:id": cartPage,
     "/cart": cartPage,
+    "/signin": signinPage,
 }
 
 const router = async () =>{

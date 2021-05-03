@@ -19,12 +19,18 @@ const signinPage = {
                             <input type="password" name="password" id="password" />
                         </li>
                         <li>
-                            <h1>Sign In</h1>
+                            <button type="submit" class="primary">Sign In</button>
                         </li>
-
+                        <li>
+                            <div>New User?
+                                <a href="/#/register">Create your account</a>
+                            </div>
+                        </li>
                     </ul>
                 </form>
             </div>
         `;
     },
 }
+
+export default signinPage;
