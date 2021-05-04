@@ -91,6 +91,9 @@ header a{
 header a:hover{
     color: #dd1f00
 }
+header div{
+    padding-right: 20px;
+}
 .brand a{
     font-size:3rem;
 }

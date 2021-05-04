@@ -1,9 +1,10 @@
-import homePage from '../screens/homepage.js';
-import productPage from '../screens/productpage.js';
-import { parseRequestUrl } from './utils.js';
-import errorPage from '../screens/errorpage.js';
-import cartPage from '../screens/cartpage.js';
-import signinPage from '../screens/signinpage.js';
+import homePage from '../screens/homepage';
+import productPage from '../screens/productpage';
+import { parseRequestUrl } from './utils';
+import errorPage from '../screens/errorpage';
+import cartPage from '../screens/cartpage';
+import signinPage from '../screens/signinpage';
+import header from './components/header';
 
 // routes object with javascript rendered pages
 const routes = {
@@ -22,6 +23,10 @@ const router = async () =>{
     
     // screen checks if the routes has a valid url and shows it otherwise it opens an error page
     const screen = routes[parseUrl] ? routes[parseUrl] : errorPage;
+
+    const headerVar = document.getElementById("header-container");
+    headerVar.innerHTML = await header.render();
+    await header.after_render();
 
     const main = document.getElementById("main-container");
     // await is used here because render is async function
