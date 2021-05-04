@@ -1,17 +1,20 @@
 import { signin } from "../src/api";
 import { getUserInfo, setUserInfo } from "../src/localstorage";
+import { showLoading, hideLoading, showMessage } from "../src/utils";
 
 // Sign in page object which contains after_render and render functions
 const signinPage = {
     after_render:() => {
         document.getElementById("signin-form").addEventListener("submit", async (e) => {
             e.preventDefault();
+            showLoading();
             const data = await signin({
                 email: document.getElementById("email").value,
                 password: document.getElementById("password").value,
             });
+            hideLoading();
             if(data.error){
-                alert(data.error);
+                showMessage(data.error);
             } else{
                 setUserInfo(data);
                 document.location.hash = "/";

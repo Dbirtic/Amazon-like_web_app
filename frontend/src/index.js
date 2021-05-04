@@ -1,6 +1,6 @@
 import homePage from '../screens/homepage';
 import productPage from '../screens/productpage';
-import { parseRequestUrl } from './utils';
+import { parseRequestUrl, showLoading, hideLoading } from './utils';
 import errorPage from '../screens/errorpage';
 import cartPage from '../screens/cartpage';
 import signinPage from '../screens/signinpage';
@@ -16,6 +16,8 @@ const routes = {
 }
 
 const router = async () =>{
+    showLoading();
+
     const request = parseRequestUrl();
 
     // parseUrl directly compares the values inside the url
@@ -32,6 +34,7 @@ const router = async () =>{
     // await is used here because render is async function
     main.innerHTML = await screen.render();
     await screen.after_render();
+    hideLoading();
 }
 
 window.addEventListener('load', router);
