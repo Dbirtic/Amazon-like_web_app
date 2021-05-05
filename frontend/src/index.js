@@ -5,6 +5,7 @@ import errorPage from '../screens/errorpage';
 import cartPage from '../screens/cartpage';
 import signinPage from '../screens/signinpage';
 import header from './components/header';
+import registerPage from '../screens/registerpage';
 
 // routes object with javascript rendered pages
 const routes = {
@@ -13,6 +14,7 @@ const routes = {
     "/cart/:id": cartPage,
     "/cart": cartPage,
     "/signin": signinPage,
+    "/register": registerPage,
 }
 
 const router = async () =>{
