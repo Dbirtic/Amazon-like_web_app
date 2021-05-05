@@ -64,8 +64,4 @@ const registerPage = {
     },
 }
 
-// TO DO:
-// note to self, the sign in button has to have a different class
-// it is ugly and needs to be changed
-
 export default registerPage;

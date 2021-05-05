@@ -6,6 +6,7 @@ import cartPage from '../screens/cartpage';
 import signinPage from '../screens/signinpage';
 import header from './components/header';
 import registerPage from '../screens/registerpage';
+import profilePage from '../screens/profilepage';
 
 // routes object with javascript rendered pages
 const routes = {
@@ -15,6 +16,7 @@ const routes = {
     "/cart": cartPage,
     "/signin": signinPage,
     "/register": registerPage,
+    "/profile": profilePage,
 }
 
 const router = async () =>{
@@ -35,7 +37,8 @@ const router = async () =>{
     const main = document.getElementById("main-container");
     // await is used here because render is async function
     main.innerHTML = await screen.render();
-    await screen.after_render();
+    if(screen.after_render)
+        await screen.after_render();
     hideLoading();
 }
 

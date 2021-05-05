@@ -1,14 +1,14 @@
-import { register } from "../src/api";
+import { update } from "../src/api";
 import { getUserInfo, setUserInfo } from "../src/localstorage";
 import { showLoading, hideLoading, showMessage } from "../src/utils";
 
 // Sign in page object which contains after_render and render functions
-const registerPage = {
+const profilePage = {
     after_render:() => {
-        document.getElementById("register-form").addEventListener("submit", async (e) => {
+        document.getElementById("profile-form").addEventListener("submit", async (e) => {
             e.preventDefault();
             showLoading();
-            const data = await register({
+            const data = await update({
                 name: document.getElementById('name').value,
                 email: document.getElementById("email").value,
                 password: document.getElementById("password").value,
@@ -23,23 +23,24 @@ const registerPage = {
         });
     },
     render: () => {
-        if(getUserInfo().name){
+        const {name, email} = getUserInfo();
+        if(!name){
             document.location.hash = '/';
         }
         return `
             <div class="form-container">
-                <form id="register-form">
+                <form id="profile-form">
                     <ul class="form-items">
                         <li>
-                            <h1>Register an Account</h1>
+                            <h1>User Profile</h1>
                         </li>
                         <li>
                             <label for="name">Name</label>
-                            <input type="name" name="name" id="name" />
+                            <input type="name" name="name" id="name" value="${name}" />
                         </li>
                         <li>
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" />
+                            <input type="email" name="email" id="email" value="${email}" />
                         </li>
                         <li>
                             <label for="password">Password</label>
@@ -50,12 +51,7 @@ const registerPage = {
                             <input type="password" name="repassword" id="repassword" />
                         </li>
                         <li>
-                            <button type="submit" class="primary">Register</button>
-                        </li>
-                        <li>
-                            <div>Already have an account?
-                                <a href="/#/signin">Sign in</a>
-                            </div>
+                            <button type="submit" class="primary">Update</button>
                         </li>
                     </ul>
                 </form>
@@ -64,8 +60,4 @@ const registerPage = {
     },
 }
 
-// TO DO:
-// note to self, the sign in button has to have a different class
-// it is ugly and needs to be changed
-
-export default registerPage;
+export default profilePage;
