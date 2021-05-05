@@ -50,6 +50,10 @@ button.primary{
     background-color: #aa1100;
 }
 
+button.secondary{
+    background-color: #111;
+}
+
 .overlay{
     display: none;
     position: fixed;

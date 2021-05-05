@@ -1,11 +1,15 @@
 import { update } from "../src/api";
-import { getUserInfo, setUserInfo } from "../src/localstorage";
+import { getUserInfo, setUserInfo, clearUser } from "../src/localstorage";
 import { showLoading, hideLoading, showMessage } from "../src/utils";
 
 // Sign in page object which contains after_render and render functions
 const profilePage = {
     after_render:() => {
-        document.getElementById("profile-form").addEventListener("submit", async (e) => {
+        document.getElementById("signout-btn").addEventListener('click', () => {
+            clearUser();
+            document.location.hash = '/';
+        });
+        document.getElementById("update-btn").addEventListener("submit", async (e) => {
             e.preventDefault();
             showLoading();
             const data = await update({
@@ -51,7 +55,10 @@ const profilePage = {
                             <input type="password" name="repassword" id="repassword" />
                         </li>
                         <li>
-                            <button type="submit" class="primary">Update</button>
+                            <button type="submit" class="primary" id="update-btn">Update</button>
+                        </li>
+                        <li>
+                            <button class="secondary" id="signout-btn">Sign Out</button>
                         </li>
                     </ul>
                 </form>

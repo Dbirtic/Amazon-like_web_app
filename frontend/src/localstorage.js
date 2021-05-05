@@ -25,6 +25,10 @@ export const setUserInfo = ({
     }));
 };
 
+export const clearUser = () => {
+    localStorage.removeItem('userInfo');
+}
+
 // returns the values from the local storage if there is something in localstorage else return empty name, password and email
 export const getUserInfo = () =>{
     return localStorage.getItem('userInfo') 
