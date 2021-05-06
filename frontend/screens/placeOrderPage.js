@@ -1,5 +1,7 @@
-import { getCartItems, getShipping, getPayment } from "../src/localstorage";
+import { getCartItems, getShipping, getPayment, cleanCart } from "../src/localstorage";
 import checkoutSteps from "../src/components/checkoutSteps";
+import { showLoading, hideLoading, showMessage } from "../src/utils";
+import { createOrder } from "../src/api";
 
 const convertCartToOder = () =>{
     // this function gets items from localstorage and saves them in order items
@@ -33,8 +35,19 @@ const convertCartToOder = () =>{
 };
 
 const placeOrderPage = {
-    after_render: () => {
-
+    after_render: async() => {
+        document.getElementById('placeorder-button').addEventListener('click', async () =>{
+            const order = convertCartToOder();
+            showLoading();
+            const data = await createOrder(order);
+            hideLoading();
+            if(data.error){
+                showMessage(data.error);
+            } else{
+                cleanCart();
+                document.location.hash = `/order/${data.order._id}`;
+            }
+        });
     },
     render: () =>{
         const {
