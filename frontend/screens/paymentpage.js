@@ -7,7 +7,7 @@ const paymentPage = {
             e.preventDefault();
             const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
             setPayment({paymentMethod});
-            document.location.hash = 'placeorder';
+            document.location.hash = '/placeorder';
         });
     },
     render: () => {

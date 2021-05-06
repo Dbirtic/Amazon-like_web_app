@@ -9,6 +9,7 @@ import registerPage from '../screens/registerpage';
 import profilePage from '../screens/profilepage';
 import shippingPage from '../screens/shippingpage';
 import paymentPage from '../screens/paymentpage';
+import placeOrderPage from '../screens/placeOrderPage';
 
 // routes object with javascript rendered pages
 const routes = {
@@ -21,6 +22,7 @@ const routes = {
     "/profile": profilePage,
     "/shipping": shippingPage,
     "/payment": paymentPage,
+    "/placeorder": placeOrderPage,
 }
 
 const router = async () =>{
