@@ -107,11 +107,11 @@ export const createOrder = async(order) =>{
             },
             data: order,
         });
-        if(response.statusText !== 'OK'){
+        if(response.statusText !== 'Created'){
             throw new Error(response.data.message);
         }
         return response.data;
     } catch(err) {
-        return {error: (err.response ? err.response.data.message : err.message)};
+        return {error: err.response ? err.response.data.message : err.message};
     }
 }

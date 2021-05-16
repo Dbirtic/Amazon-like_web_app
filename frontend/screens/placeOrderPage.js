@@ -3,7 +3,7 @@ import checkoutSteps from "../src/components/checkoutSteps";
 import { showLoading, hideLoading, showMessage } from "../src/utils";
 import { createOrder } from "../src/api";
 
-const convertCartToOder = () =>{
+const convertCartToOrder = () =>{
     // this function gets items from localstorage and saves them in order items
     const orderItems = getCartItems();
     if(orderItems.length === 0){
@@ -37,16 +37,26 @@ const convertCartToOder = () =>{
 const placeOrderPage = {
     after_render: async() => {
         document.getElementById('placeorder-button').addEventListener('click', async () =>{
-            const order = convertCartToOder();
-            showLoading();
-            const data = await createOrder(order);
-            hideLoading();
-            if(data.error){
-                showMessage(data.error);
-            } else{
-                cleanCart();
-                document.location.hash = `/order/${data.order._id}`;
-            }
+          console.log("1");  
+          const order = convertCartToOrder();
+          console.log("2"); 
+          showLoading();
+          console.log("3"); 
+          const data = await createOrder(order);
+          console.log("4"); 
+          hideLoading();
+          console.log("5"); 
+          if(data.error){
+            console.log("6"); 
+            showMessage(data.error);
+            console.log(data.error); 
+          } else{
+            console.log("log before clean cart");
+            cleanCart();
+            console.log("clean cart is finished");
+            document.location.hash = `/order/${data.order._id}`;
+            console.log("document location hash has redirected to the order id: " + data.order._id);
+          }
         });
     },
     render: () =>{
@@ -58,7 +68,7 @@ const placeOrderPage = {
             shippingPrice,
             taxPrice,
             totalPrice,
-        } = convertCartToOder();
+        } = convertCartToOrder();
         return `
         <div>
           ${checkoutSteps.render({
