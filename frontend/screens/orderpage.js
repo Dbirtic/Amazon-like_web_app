@@ -7,8 +7,6 @@ const orderPage = {
     render: async() =>{
         // request information
         const request = parseRequestUrl();
-        console.log(`request: ${request}`);
-        console.log(request);
 
         // sending ajax request to the server to get information about order
         const {
@@ -20,15 +18,11 @@ const orderPage = {
             shippingPrice,
             taxPrice,
             totalPrice,
+            isDelivered,
+            deliveredAt,
+            isPaid,
+            paidAt,
         } = await getOrder(request.id);
-        console.log(_id);
-        console.log(shipping);
-        console.log(payment);
-        console.log(orderItems);
-        console.log(itemsPrice);
-        console.log(shippingPrice);
-        console.log(taxPrice);
-        console.log(totalPrice);
         return `
         <div>
           <h1>Order ${_id}</h1>
@@ -40,12 +34,18 @@ const orderPage = {
                     ${shipping.address}, ${shipping.city}, ${shipping.postalCode}, 
                     ${shipping.country}
                 </div>
+                ${isDelivered ? `<div class="success">Delivered at ${deliveredAt}</div>`:
+                    `<div class="error">Not delivered</div>`
+                }
               </div>
               <div>
                 <h2>Payment</h2>
                 <div>
                   Payment Method : ${payment.paymentMethod}
                 </div>
+                ${isPaid ? `<div class="success">Paid at ${paidAt}</div>`:
+                    `<div class="error">Not paid</div>`
+                }
               </div>
               <div>
                 <ul class="cart-list-container">
