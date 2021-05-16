@@ -8,7 +8,6 @@ const orderSchema = new mongoose.Schema(
         image: { type: String, required: true },
         price: { type: Number, required: true },
         qty: { type: Number, required: true },
-        // product gives us the real properties of the order item
         product: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Product',
@@ -16,7 +15,6 @@ const orderSchema = new mongoose.Schema(
         },
       },
     ],
-    // user that placed the order
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     shipping: {
       address: String,

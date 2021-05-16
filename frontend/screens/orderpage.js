@@ -2,10 +2,15 @@ import { parseRequestUrl } from "../src/utils";
 import { getOrder } from "../src/api";
 
 
-const placeOrderPage = {
+const orderPage = {
     after_render: async() => {},
     render: async() =>{
+        // request information
         const request = parseRequestUrl();
+        console.log(`request: ${request}`);
+        console.log(request);
+
+        // sending ajax request to the server to get information about order
         const {
             _id,
             shipping,
@@ -14,11 +19,19 @@ const placeOrderPage = {
             itemsPrice,
             shippingPrice,
             taxPrice,
-            totalPrice
+            totalPrice,
         } = await getOrder(request.id);
+        console.log(_id);
+        console.log(shipping);
+        console.log(payment);
+        console.log(orderItems);
+        console.log(itemsPrice);
+        console.log(shippingPrice);
+        console.log(taxPrice);
+        console.log(totalPrice);
         return `
         <div>
-        <h1>Order ${_id}</h1>
+          <h1>Order ${_id}</h1>
           <div class="order">
             <div class="order-info">
               <div>
@@ -74,4 +87,4 @@ const placeOrderPage = {
     },
 };
 
-export default placeOrderPage;
+export default orderPage;

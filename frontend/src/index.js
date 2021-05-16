@@ -10,12 +10,14 @@ import profilePage from '../screens/profilepage';
 import shippingPage from '../screens/shippingpage';
 import paymentPage from '../screens/paymentpage';
 import placeOrderPage from '../screens/placeOrderPage';
+import orderPage from '../screens/orderpage';
 
 // routes object with javascript rendered pages
 const routes = {
     "/": homePage,
     "/product/:id": productPage,
     "/cart/:id": cartPage,
+    "/order/:id": orderPage,
     "/cart": cartPage,
     "/signin": signinPage,
     "/register": registerPage,
@@ -23,6 +25,7 @@ const routes = {
     "/shipping": shippingPage,
     "/payment": paymentPage,
     "/placeorder": placeOrderPage,
+    
 }
 
 const router = async () =>{
