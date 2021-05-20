@@ -1,5 +1,5 @@
 import { parseRequestUrl, showLoading, hideLoading, showMessage, reRender } from "../src/utils";
-import { getOrder, getPaypalCLientId } from "../src/api";
+import { getOrder, getPaypalCLientId, payOrder } from "../src/api";
 
 const addPaypalSdk = async (totalPrice) =>{
   const clientId = await getPaypalCLientId();
@@ -46,7 +46,11 @@ const handlePayment = (clientId, totalPrice) =>{
     onAuthorize(data, actions){
       return actions.payment.execute().then(async () =>{
         showLoading();
-        // call pay order
+        await payOrder(parseRequestUrl().id, {
+          orderID: data.orderID,
+          payerID: data.payerID,
+          paymentID: data.paymentID,
+        });
         hideLoading();
         showMessage('Payment was successfull.', () =>{
           reRender(orderPage);
