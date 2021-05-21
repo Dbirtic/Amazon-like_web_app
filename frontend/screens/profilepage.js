@@ -1,4 +1,4 @@
-import { update } from "../src/api";
+import { update, getMyOrder } from "../src/api";
 import { getUserInfo, setUserInfo, clearUser } from "../src/localstorage";
 import { showLoading, hideLoading, showMessage } from "../src/utils";
 
@@ -26,43 +26,77 @@ const profilePage = {
             }
         });
     },
-    render: () => {
+    render: async () => {
         const {name, email} = getUserInfo();
         if(!name){
             document.location.hash = '/';
         }
+        const orders = await getMyOrder();
         return `
-            <div class="form-container">
-                <form id="profile-form">
-                    <ul class="form-items">
-                        <li>
-                            <h1>User Profile</h1>
-                        </li>
-                        <li>
-                            <label for="name">Name</label>
-                            <input type="name" name="name" id="name" value="${name}" />
-                        </li>
-                        <li>
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" value="${email}" />
-                        </li>
-                        <li>
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" />
-                        </li>
-                        <li>
-                            <label for="repassword">Confirm Password</label>
-                            <input type="password" name="repassword" id="repassword" />
-                        </li>
-                        <li>
-                            <button type="submit" class="primary" id="update-btn">Update</button>
-                        </li>
-                        <li>
-                            <button class="secondary" id="signout-btn">Sign Out</button>
-                        </li>
-                    </ul>
-                </form>
+            <div class="content profile">
+                <div class="profile-info">
+                    <div class="form-container">
+                        <form id="profile-form">
+                            <ul class="form-items">
+                                <li>
+                                    <h1>User Profile</h1>
+                                </li>
+                                <li>
+                                    <label for="name">Name</label>
+                                    <input type="name" name="name" id="name" value="${name}" />
+                                </li>
+                                <li>
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" value="${email}" />
+                                </li>
+                                <li>
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" />
+                                </li>
+                                <li>
+                                    <label for="repassword">Confirm Password</label>
+                                    <input type="password" name="repassword" id="repassword" />
+                                </li>
+                                <li>
+                                    <button type="submit" class="primary" id="update-btn">Update</button>
+                                </li>
+                                <li>
+                                    <button class="secondary" id="signout-btn">Sign Out</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <div class="profile-orders">
+                    <h1>Order History</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ORDER ID</th>
+                                <th>DATE</th>
+                                <th>TOTAL</th>
+                                <th>PAID</th>
+                                <th>DELIVERED</th>
+                                <th>ACTIOINS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${orders.length === 0 ? `<tr><td colspan="6">No Order Found.</tr>` : orders.map((order) =>`
+                                <tr>
+                                    <td>${order._id}</td>
+                                    <td>${order.createdAt}</td>
+                                    <td>${order.totalPrice}</td>
+                                    <td>${order.paidAt || 'No'}</td>
+                                    <td>${order.deliveryAt || 'No'}</td>
+                                    <td><a href="/#/order/${order._id}">Details</a></td>
+                                </tr>
+                            
+                            `).join('\n')}
+                        </tbody>
+                    </table>
+                </div>
             </div>
+            
         `;
     },
 }
