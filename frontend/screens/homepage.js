@@ -1,24 +1,13 @@
 import axios from 'axios';
 import rating from '../src/components/rating';
-import { hideLoading, showLoading } from '../src/utils';
+import { getProducts } from '../src/api';
 
 const homePage = {
     render: async () =>{
-        showLoading();
-        const response = await axios({
-            url: "http://localhost:5000/api/products",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
-        hideLoading();
-
-        if(!response || response.statusText !== 'OK') {
-            return `<div>Error in getting data!!!</div>`
+        const products = await getProducts();
+        if(products.error){
+            return `<div class="error">${products.error}</div>`;
         }
-        // since we're using axios we don't need json() function
-        const products = response.data;
 
         return `
             <ul class="products">

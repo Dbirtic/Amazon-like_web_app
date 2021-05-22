@@ -3,7 +3,7 @@ import dashboardMenu from "../src/components/dashboardmenu";
 const dashboardPage = {
     after_render: () => {},
     render: () => {
-        return `˙
+        return `
             <div class="dashboard">
                 ${dashboardMenu.render({selected: 'dashboard'})}
                 <div class="dashboard-content">

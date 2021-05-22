@@ -490,3 +490,15 @@ footer{
       flex: 4 1 80rem;
       padding: 1rem;
   }
+
+  .product-list button{
+      color: black;
+      padding: 0.5rem;
+      font-size: 1.3rem;
+  }
+  .product-list button:hover{
+      color: #aa1100;
+  }
+  .tr-action{
+      width: 10rem;
+  }
