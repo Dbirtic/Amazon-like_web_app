@@ -11,6 +11,7 @@ import shippingPage from '../screens/shippingpage';
 import paymentPage from '../screens/paymentpage';
 import placeOrderPage from '../screens/placeOrderPage';
 import orderPage from '../screens/orderpage';
+import dashboardPage from '../screens/dashboardpage';
 
 // routes object with javascript rendered pages
 const routes = {
@@ -25,7 +26,7 @@ const routes = {
     "/shipping": shippingPage,
     "/payment": paymentPage,
     "/placeorder": placeOrderPage,
-    
+    "/dashboard": dashboardPage,
 }
 
 const router = async () =>{
